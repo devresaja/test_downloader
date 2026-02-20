@@ -5,6 +5,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:workmanager/workmanager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
+import 'package:test_uploader/gallery_screen.dart';
 
 // Background task handler - must be top-level function
 @pragma('vm:entry-point')
@@ -460,6 +461,15 @@ class _DownloadScreenState extends State<DownloadScreen> {
         title: const Text('Background Downloader + WorkManager'),
         actions: [
           IconButton(
+            icon: const Icon(Icons.photo),
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (_) => const GalleryScreen()));
+            },
+            tooltip: 'Open Gallery',
+          ),
+          IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _loadState,
             tooltip: 'Refresh State',
@@ -536,3 +546,5 @@ class _DownloadScreenState extends State<DownloadScreen> {
     );
   }
 }
+
+// Gallery logic moved to gallery_screen.dart
